@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 
 
 my_url = 'https://www.brainyquote.com/topics/motivational'
@@ -13,17 +14,19 @@ soup = BeautifulSoup(source, 'lxml')
 #Parses HTML
 
 
+regex_quote = re.compile('.*b-qt*.')
+regex_author = re.compile('.*bq-aut*.')
 
+quotes = soup.findAll('a', class_ = regex_quote)
+authors = soup.findAll('a', class_ = regex_author)
 
-quote = soup.find('a', class_ = "b-qt qt_410518 oncl_q").text
-#puthor = soup.find('a', class_ = 'bq-aut qa_410518 oncl_a').text
+i = 0
 
-
-#Want to find_all where class_ = contains"b-qt" for quotes
-
-print()
-print(quote)
-
-
-#print()
-#print(author)
+for i in range (0,len(quotes)):
+    quote = quotes[i].text
+    author = authors[i].text
+    print()
+    print(quote)
+    print()
+    print('-' + str(author))
+    i += 1
