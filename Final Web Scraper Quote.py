@@ -13,9 +13,8 @@ soup = BeautifulSoup(source, 'lxml')
 
 #Parses HTML
 
-
 regex_quote = re.compile('.*b-qt*.')
-regex_author = re.compile('.*b-aut*.')
+regex_author = re.compile('.*bq-aut*.')
 
 quotes = soup.findAll('a', class_ = regex_quote)
 authors = soup.findAll('a', class_ = regex_author)
@@ -24,17 +23,9 @@ i = 0
 
 for i in range (0,len(quotes)):
     quote = quotes[i].text
+    author = authors[i].text
     print()
     print(quote)
+    print()
+    print('-' + str(author))
     i += 1
-
-
-#puthor = soup.find('a', class_ = 'bq-aut qa_410518 oncl_a').text
-
-
-#Want to find_all where class_ = contains"b-qt" for quotes
-
-
-
-#print()
-#print(author)
