@@ -19,8 +19,6 @@ regex_author = re.compile('.*bq-aut*.')
 quotes = soup.findAll('a', class_ = regex_quote)
 authors = soup.findAll('a', class_ = regex_author)
 
-i = 0
-
 for i in range (0,len(quotes)):
     quote = quotes[i].text
     author = authors[i].text
@@ -28,4 +26,3 @@ for i in range (0,len(quotes)):
     print(quote)
     print()
     print('-' + str(author))
-    i += 1
